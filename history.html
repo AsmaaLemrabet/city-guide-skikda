@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History of Skikda - City Guide</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    
+
+    :root {
+      --gold: #D4AF37;
+      --navy: #0A1F3D;
+      --sand: #E8D8C3;
+      --rust: #B85C38;
+      --white: #FFFFFF;
+      --black: #121212;
+      --bg-color: #FFFFFF;
+      --text-color: #121212;
+      --card-bg: #FFFFFF;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --transition-normal: 0.3s ease;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #E8D8C3;
+      --card-bg: #1E1E1E;
+      --navy: #1A2A4D;
+      --sand: #3A3A3A;
+      --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Hero Section */
+    .history-hero {
+      height: 100vh;
+      min-height: 700px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+      margin-top: 0px;
+      background: linear-gradient(rgba(10, 31, 61, 0.7), rgba(10, 31, 61, 0.5));
+    }
+  
+    .video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+
+    .history-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .history-hero h1 {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      letter-spacing: 2px;
+    }
+
+    .history-hero p {
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+
+    /* Timeline Section */
+    .timeline-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px;
+      background: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+    }
+
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gold), var(--navy));
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .timeline-items {
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-start;
+      padding-right: 30px;
+      margin: 80px 0;
+      width: 50%;
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .timeline-item:nth-child(even) {
+      margin-left: auto;
+      justify-content: flex-end;
+      padding-left: 30px;
+      padding-right: 0;
+    }
+
+    .timeline-item.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-content {
+      width: 100%;
+      max-width: 500px;
+      padding: 40px;
+      background: var(--card-bg);
+      box-shadow: 0 20px 50px var(--shadow-color);
+      border-radius: 12px;
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      border-top: 5px solid var(--gold);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(10,31,61,0.1) 100%);
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      background: linear-gradient(135deg, rgba(10,31,61,0.1) 0%, rgba(212,175,55,0.1) 100%);
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+    }
+
+    .timeline-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      transition: transform 0.8s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      filter: brightness(0.9);
+    }
+
+    .timeline-content:hover .timeline-img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .timeline-date {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--navy);
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      min-width: 150px;
+      text-align: center;
+    }
+
+    .timeline-item:nth-child(even) .timeline-date {
+      left: auto;
+      right: -25px;
+      transform: translateX(50%);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-date {
+      left: -25px;
+      transform: translateX(-50%);
+    }
+
+    .timeline-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--navy);
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .timeline-content h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .timeline-content p {
+      color: var(--text-color);
+      line-height: 1.8;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .timeline-container::before {
+        left: 40px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 0;
+      }
+      
+      .timeline-item:nth-child(even) {
+        padding-left: 80px;
+        padding-right: 0;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-date,
+      .timeline-item:nth-child(even) .timeline-date {
+        left: 15px;
+        right: auto;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .history-hero h1 {
+        font-size: 3.5rem;
+      }
+      
+      .history-hero p {
+        font-size: 1.4rem;
+      }
+
+      .timeline-content h3 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .history-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .history-hero p {
+        font-size: 1.2rem;
+      }
+
+      .timeline-content {
+        padding: 25px;
+      }
+
+      .timeline-content h3 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header id="mainHeader">
+       <a href="index.php" style="text-decoration: none; color: inherit;">
+  <h1 class="logo">City Guide</h1>
+</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.php" data-en="Home" data-fr="Accueil" data-ar="الرئيسية">Home</a></li>
+        <li><a href="restaurants.php" data-en="Restaurants" data-fr="Restaurants" data-ar="مطاعم">Restaurants</a></li>
+        <li><a href="hotels.php" data-en="Hotels" data-fr="Hôtels" data-ar="فنادق">Hotels</a></li>
+        <li><a href="activities.php" data-en="Activities" data-fr="Activités" data-ar="أنشطة">Activities</a></li>
+        <li><a href="facilities.php" data-en="Facilities" data-fr="Installations" data-ar="مرافق">Facilities</a></li>
+        <li><a href="history.html" class="active" data-en="History" data-fr="Histoire" data-ar="تاريخ">History</a></li>
+        <li><a href="infos.html" data-en="Info" data-fr="Infos" data-ar="معلومات">Info</a></li>
+      </ul>
+    </nav>
+    <div class="actions">
+      <select id="languageSwitch">
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="ar">AR</option>
+      </select>
+      <button id="modeToggle"><i class="fas fa-moon"></i> <span data-en="Dark Mode" data-fr="Mode Sombre" data-ar="الوضع المظلم">Dark Mode</span></button>
+      <a href="user-dashboard.php" class="profile-btn" title="Account">
+        <i class="fas fa-user"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="history-hero" data-aos="fade">
+    <div class="video-container">
+      <video autoplay muted loop class="hero-video">
+        <source src="assets/clips/history.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="history-hero-content">
+      <h1 data-en="History of Skikda" data-fr="Histoire de Skikda" data-ar="تاريخ سكيكدة">History of Skikda</h1>
+      <p data-en="A journey through time" data-fr="Un voyage à travers le temps" data-ar="رحلة عبر الزمن">A journey through time</p>
+    </div>
+    <div class="scroll-down">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline-container">
+    <div class="timeline-items">
+      <!-- Ancient Period -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-content">
+          <div class="timeline-date" data-en="3rd century BC" data-fr="IIIe siècle av. J.-C." data-ar="القرن الثالث قبل الميلاد">3rd century BC</div>
+          <img src="assets/images/history/photo_2025-06-09_18-34-59.jpg" alt="Ancient Ruins" class="timeline-img">
+          <h3 data-en="Foundation of Rusicade" data-fr="Fondation de Rusicade" data-ar="تأسيس روسيكاد">Foundation of Rusicade</h3>
+          <p data-en="Founded by the Phoenicians as a trading post, Rusicade becomes an important Roman city after the Roman conquest of North Africa."
+             data-fr="Fondée par les Phéniciens comme comptoir commercial, Rusicade devient une importante cité romaine après la conquête de l'Afrique du Nord par Rome."
+             data-ar="تأسست روسيكاد من قبل الفينيقيين كمركز تجاري، وأصبحت مدينة رومانية هامة بعد الفتح الروماني لشمال إفريقيا.">
+            Founded by the Phoenicians as a trading post, Rusicade becomes an important Roman city after the Roman conquest of North Africa.
+          </p>
+        </div>
+      </div>
+
+      <!-- Roman Period -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-content">
+          <div class="timeline-date" data-en="1st - 3rd century" data-fr="Ier - IIIe siècle" data-ar="القرن 1 - 3">1st - 3rd century</div>
+          <img src="assets/images/history/histo2.jpg" alt="Roman Ruins" class="timeline-img">
+          <h3 data-en="Roman Peak" data-fr="Apogée romaine" data-ar="أوج العصر الروماني">Roman Peak</h3>
+          <p data-en="Under the Roman Empire, Rusicade reached its peak with impressive monuments: a theater, temples, baths, and a sophisticated aqueduct system."
+             data-fr="Sous l'Empire romain, Rusicade connaît son âge d'or avec des monuments impressionnants : théâtre, temples, thermes et un système d'aqueduc sophistiqué."
+             data-ar="تحت الإمبراطورية الرومانية، بلغت روسيكاد ذروتها مع معالم رائعة: مسرح، معابد، حمامات، ونظام قنوات مائي معقد.">
+            Under the Roman Empire, Rusicade reached its peak with impressive monuments: a theater, temples, baths, and a sophisticated aqueduct system.
+          </p>
+        </div>
+      </div>
+
+      <!-- Byzantine Period -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-content">
+          <div class="timeline-date" data-en="5th - 7th century" data-fr="Ve - VIIe siècle" data-ar="القرن 5 - 7">5th - 7th century</div>
+          <img src="assets/images/history/histo3.jpg" alt="Byzantine Church" class="timeline-img">
+          <h3 data-en="Byzantine Period" data-fr="Période byzantine" data-ar="الفترة البيزنطية">Byzantine Period</h3>
+          <p data-en="After the fall of the Western Roman Empire, the region falls under Byzantine control with Byzantine churches marking the Christianization of the region."
+             data-fr="Après la chute de l'Empire romain d'Occident, la région passe sous contrôle byzantin avec des églises byzantines marquant la christianisation de la région."
+             data-ar="بعد سقوط الإمبراطورية الرومانية الغربية، أصبحت المنطقة تحت السيطرة البيزنطية مع الكنائس البيزنطية التي تدل على تحول المنطقة إلى المسيحية.">
+            After the fall of the Western Roman Empire, the region falls under Byzantine control with Byzantine churches marking the Christianization of the region.
+          </p>
+        </div>
+      </div>
+
+      <!-- Arab Conquest -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-content">
+          <div class="timeline-date" data-en="7th century" data-fr="VIIe siècle" data-ar="القرن السابع">7th century</div>
+          <img src="assets/images/history/histo4.jpg" alt="Arab Conquest" class="timeline-img">
+          <h3 data-en="Arab Conquest" data-fr="Conquête arabe" data-ar="الفتح الإسلامي">Arab Conquest</h3>
+          <p data-en="Muslim armies conquer the region, introducing Islam and Arabic culture. The city becomes known as Skikda, derived from the Berber word 'Tasikida' meaning 'market'."
+             data-fr="Les armées musulmanes conquièrent la région, introduisant l'islam et la culture arabe. La ville devient connue sous le nom de Skikda, dérivé du mot berbère 'Tasikida' signifiant 'marché'."
+             data-ar="فتحت الجيوش الإسلامية المنطقة، مما أدخل الإسلام والثقافة العربية. أصبحت المدينة تعرف باسم سكيكدة، المشتق من الكلمة الأمازيغية 'تاسيكيدا' التي تعني 'سوق'.">
+            Muslim armies conquer the region, introducing Islam and Arabic culture. The city becomes known as Skikda, derived from the Berber word 'Tasikida' meaning 'market'.
+          </p>
+        </div>
+      </div>
+
+      <!-- Ottoman Period -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-content">
+          <div class="timeline-date" data-en="16th - 19th century" data-fr="XVIe - XIXe siècle" data-ar="القرن 16 - 19">16th - 19th century</div>
+          <img src="assets/images/history/HISTO5.jpg" alt="Ottoman Architecture" class="timeline-img">
+          <h3 data-en="Ottoman Era" data-fr="Ère ottomane" data-ar="العصر العثماني">Ottoman Era</h3>
+          <p data-en="Skikda becomes part of the Ottoman Empire, serving as a small port town. The region sees the construction of Ottoman-style buildings and mosques."
+             data-fr="Skikda devient partie de l'Empire ottoman, servant de petite ville portuaire. La région voit la construction de bâtiments et mosquées de style ottoman."
+             data-ar="أصبحت سكيكدة جزءًا من الإمبراطورية العثمانية، حيث كانت بمثابة بلدة مينائية صغيرة. شهدت المنطقة بناء مباني ومساجد على الطراز العثماني.">
+            Skikda becomes part of the Ottoman Empire, serving as a small port town. The region sees the construction of Ottoman-style buildings and mosques.
+          </p>
+        </div>
+      </div>
+
+      <!-- French Colonization -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-content">
+          <div class="timeline-date" data-en="1838" data-fr="1838" data-ar="1838">1838</div>
+          <img src="assets/images/history/HISTO6.jpg" alt="French Colonial Buildings" class="timeline-img">
+          <h3 data-en="French Colonization" data-fr="Colonisation française" data-ar="الاستعمار الفرنسي">French Colonization</h3>
+          <p data-en="The French establish Philippeville (modern-day Skikda) as a colonial city, developing the port and constructing European-style buildings."
+             data-fr="Les Français établissent Philippeville (Skikda actuelle) comme ville coloniale, développant le port et construisant des bâtiments de style européen."
+             data-ar="أسس الفرنسيون فيليبفيل (سكيكدة الحالية) كمدينة استعمارية، حيث طوروا الميناء وبنوا مباني على الطراز الأوروبي.">
+            The French establish Philippeville (modern-day Skikda) as a colonial city, developing the port and constructing European-style buildings.
+          </p>
+        </div>
+      </div>
+
+      <!-- Algerian Independence -->
+      <div class="timeline-item" data-aos="fade-up">
+        <div class="timeline-content">
+          <div class="timeline-date" data-en="1962" data-fr="1962" data-ar="1962">1962</div>
+          <img src="assets/images/history/HISTO7.jpg" alt="Algerian Independence" class="timeline-img">
+          <h3 data-en="Algerian Independence" data-fr="Indépendance algérienne" data-ar="استقلال الجزائر">Algerian Independence</h3>
+          <p data-en="After Algeria gains independence from France, the city officially returns to its original name Skikda and becomes an important industrial and port city."
+             data-fr="Après l'indépendance de l'Algérie vis-à-vis de la France, la ville reprend officiellement son nom original Skikda et devient une importante ville industrielle et portuaire."
+             data-ar="بعد حصول الجزائر على الاستقلال من فرنسا، عادت المدينة رسميًا إلى اسمها الأصلي سكيكدة وأصبحت مدينة صناعية ومينائية هامة.">
+            After Algeria gains independence from France, the city officially returns to its original name Skikda and becomes an important industrial and port city.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 data-en="About Us" data-fr="À propos" data-ar="معلومات عنا">About Us</h4>
+        <p data-en="Discover the beauty and history of Skikda with our expert guides."
+           data-fr="Découvrez la beauté et l'histoire de Skikda avec nos guides experts."
+           data-ar="اكتشف جمال وتاريخ سكيكدة مع مرشدينا الخبراء.">
+          Discover the beauty and history of Skikda with our expert guides.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Quick Links" data-fr="Liens rapides" data-ar="روابط سريعة">Quick Links</h4>
+        <ul>
+          <li><a href="index.php" data-en="Home" data-fr="Accueil" data-ar="الرئيسية">Home</a></li>
+          <li><a href="facilities.html" data-en="Facilities" data-fr="Installations" data-ar="مرافق">Facilities</a></li>
+          <li><a href="activities.html" data-en="Activities" data-fr="Activités" data-ar="أنشطة">Activities</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Contact" data-fr="Contact" data-ar="اتصل بنا">Contact</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Skikda, Algeria</li>
+          <li><i class="fas fa-phone"></i> +213 123 456 789</li>
+          <li><i class="fas fa-envelope"></i> info@skikdatours.com</li>
+        </ul>
+       
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; <span id="year"></span> <span data-en="Skikda Tours" data-fr="Tours Skikda" data-ar="جولات سكيكدة">Skikda Tours</span>. <span data-en="All rights reserved." data-fr="Tous droits réservés." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="index.js"></script>
+  <script>
+    // Initialize AOS animation
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll down button
+    document.querySelector('.scroll-down').addEventListener('click', () => {
+      window.scrollBy({
+        top: window.innerHeight - 100,
+        behavior: 'smooth'
+      });
+    });
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      observer.observe(item);
+    }); 
+    
+  </script>
+</body>
+</html>

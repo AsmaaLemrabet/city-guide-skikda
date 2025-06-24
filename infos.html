@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Information - Skikda Tours</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    
+
+    .info-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .info-card {
+      
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 30px  #323232e4; 
+      transition: all 0.3s ease;
+     
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px var(--shadow-color);
+    }
+
+    .info-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--navy);
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .info-card h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .info-card p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .info-card ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .info-card li {
+      margin-bottom: 8px;
+    }
+
+    .emergency-contacts {
+      background: rgba(231, 76, 60, 0.1);
+      border-left: 4px solid #e74c3c;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 30px;
+    }
+
+    .emergency-contacts h3 {
+      color: #e74c3c;
+      margin-bottom: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .contact-item i {
+      color: #e74c3c;
+    }
+
+.map-container {
+    height: 400px;
+    width: 100%;
+    max-width: 800px; 
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 40px auto; 
+    box-shadow: 0 10px 30px var(--shadow-color);
+    position: relative;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30000%;
+    height: 200%;
+    border: none;
+}
+    .faq-section {
+      margin-top: 60px;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px  #363636e4; ;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+    }
+
+    .faq-answer {
+      display: none;
+      padding-top: 10px;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+ .faq-item:hover {
+      transform: translateY(-2px);
+      
+    }
+    .faq-item.active .faq-question::after {
+      content: '-';
+    }
+  </style>
+</head>
+<body>
+
+<header id="mainHeader">
+    <a href="index.php" style="text-decoration: none; color: inherit;">
+  <h1 class="logo">City Guide</h1>
+</a>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.php" data-en="Home" data-fr="Accueil" data-ar="الرئيسية">Home</a></li>
+      <li><a href="restaurants.php" data-en="Restaurants" data-fr="Restaurants" data-ar="مطاعم">Restaurants</a></li>
+      <li><a href="hotels.php" data-en="Hotels" data-fr="Hôtels" data-ar="فنادق">Hotels</a></li>
+      <li><a href="activities.php" data-en="Activities" data-fr="Activités" data-ar="أنشطة">Activities</a></li>
+      <li><a href="facilities.php" data-en="Facilities" data-fr="Installations" data-ar="مرافق">Facilities</a></li>
+      <li><a href="history.html" data-en="History" data-fr="Histoire" data-ar="تاريخ">History</a></li>
+      <li><a href="infos.html" class="active" data-en="Info" data-fr="Infos" data-ar="معلومات">Info</a></li>
+    </ul>
+  </nav>
+  <div class="actions">
+    <select id="languageSwitch">
+      <option value="en">EN</option>
+      <option value="fr">FR</option>
+      <option value="ar">AR</option>
+    </select>
+    <button id="modeToggle"><i class="fas fa-moon"></i> Dark Mode</button>
+    <a href="user-dashboard.php" class="profile-btn" title="Account">
+            <i class="fas fa-user"></i>
+          </a>
+        </li>
+  </div>
+</header>
+
+<main class="info-container">
+    <br>
+    <br>
+    <br>
+  <h1 class="section-title" data-en="Essential Information" data-fr="Informations Essentielles" data-ar="معلومات أساسية">Essential Information</h1>
+  
+  <div class="info-grid">
+    <div class="info-card">
+      <h2 data-en="Getting Around" data-fr="Se Déplacer" data-ar="التنقل">Getting Around</h2>
+      <p data-en="Skikda has several transportation options for visitors:" data-fr="Skikda propose plusieurs options de transport pour les visiteurs :" data-ar="تتوفر في سكيكدة عدة خيارات للنقل للزوار:">
+        Skikda has several transportation options for visitors:
+      </p>
+      <ul>
+        <li data-en="Taxis: Readily available throughout the city" data-fr="Taxis : Disponibles dans toute la ville" data-ar="سيارات الأجرة: متوفرة بسهولة في جميع أنحاء المدينة">Taxis: Readily available throughout the city</li>
+        <li data-en="Buses: Affordable public transportation" data-fr="Bus : Transport public abordable" data-ar="الحافلات: وسائل النقل العام بأسعار معقولة">Buses: Affordable public transportation</li>
+        <li data-en="Car Rentals: Available at the airport and city center" data-fr="Location de voitures : Disponible à l'aéroport et au centre-ville" data-ar="تأجير السيارات: متاح في المطار ووسط المدينة">Car Rentals: Available at the airport and city center</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h2 data-en="Weather & Climate" data-fr="Météo et Climat" data-ar="الطقس والمناخ">Weather & Climate</h2>
+      <p data-en="Skikda enjoys a Mediterranean climate with:" data-fr="Skikda bénéficie d'un climat méditerranéen avec :" data-ar="يتمتع سكيكدة بمناخ متوسطي مع:">
+        Skikda enjoys a Mediterranean climate with:
+      </p>
+      <ul>
+        <li data-en="Mild, wet winters (Dec-Feb)" data-fr="Hivers doux et humides (déc-fév)" data-ar="شتاء معتدل ورطب (ديسمبر-فبراير)">Mild, wet winters (Dec-Feb)</li>
+        <li data-en="Warm, dry summers (Jun-Aug)" data-fr="Étés chauds et secs (juin-août)" data-ar="صيف دافئ وجاف (يونيو-أغسطس)">Warm, dry summers (Jun-Aug)</li>
+        <li data-en="Best time to visit: April-June & September-October" data-fr="Meilleure période pour visiter : avril-juin et septembre-octobre" data-ar="أفضل وقت للزيارة: أبريل-يونيو وسبتمبر-أكتوبر">Best time to visit: April-June & September-October</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h2 data-en="Currency & Payments" data-fr="Monnaie et Paiements" data-ar="العملة والمدفوعات">Currency & Payments</h2>
+      <p data-en="The local currency is the Algerian Dinar (DZD)." data-fr="La monnaie locale est le dinar algérien (DZD)." data-ar="العملة المحلية هي الدينار الجزائري (DZD).">
+        The local currency is the Algerian Dinar (DZD).
+      </p>
+      <ul>
+        <li data-en="Credit cards accepted in major hotels and restaurants" data-fr="Cartes de crédit acceptées dans les grands hôtels et restaurants" data-ar="بطاقات الائتمان مقبولة في الفنادق والمطاعم الكبرى">Credit cards accepted in major hotels and restaurants</li>
+        <li data-en="ATMs widely available" data-fr="Distributeurs automatiques largement disponibles" data-ar="أجهزة الصراف الآلي متوفرة على نطاق واسع">ATMs widely available</li>
+        <li data-en="Currency exchange at banks and official bureaus" data-fr="Change de devises dans les banques et bureaux officiels" data-ar="صرف العملات في البنوك والمكاتب الرسمية">Currency exchange at banks and official bureaus</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h2 data-en="Language" data-fr="Langue" data-ar="اللغة">Language</h2>
+      <p data-en="The official language is Arabic, but French is widely spoken." data-fr="La langue officielle est l'arabe, mais le français est largement parlé." data-ar="اللغة الرسمية هي العربية، ولكن الفرنسية منتشرة على نطاق واسع.">
+        The official language is Arabic, but French is widely spoken.
+      </p>
+      <ul>
+        <li data-en="English is understood in tourist areas" data-fr="L'anglais est compris dans les zones touristiques" data-ar="اللغة الإنجليزية مفهومة في المناطق السياحية">English is understood in tourist areas</li>
+        <li data-en="Basic French or Arabic phrases helpful" data-fr="Quelques phrases de base en français ou en arabe utiles" data-ar="بعض العبارات الأساسية بالفرنسية أو العربية مفيدة">Basic French or Arabic phrases helpful</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h2 data-en="Health & Safety" data-fr="Santé et Sécurité" data-ar="الصحة والسلامة">Health & Safety</h2>
+      <p data-en="Skikda is generally safe for tourists, but take normal precautions:" data-fr="Skikda est généralement sûre pour les touristes, mais prenez les précautions normales :" data-ar="سكيكدة آمنة بشكل عام للسياح، ولكن اتخذ الاحتياطات المعتادة:">
+        Skikda is generally safe for tourists, but take normal precautions:
+      </p>
+      <ul>
+        <li data-en="Drink bottled water" data-fr="Buvez de l'eau en bouteille" data-ar="اشرب المياه المعبأة">Drink bottled water</li>
+        <li data-en="Use sunscreen and stay hydrated" data-fr="Utilisez de la crème solaire et restez hydraté" data-ar="استخدم واقي الشمس وحافظ على رطوبة جسمك">Use sunscreen and stay hydrated</li>
+        <li data-en="Keep valuables secure" data-fr="Gardez vos objets de valeur en sécurité" data-ar="احفظ الأشياء الثمينة في مكان آمن">Keep valuables secure</li>
+      </ul>
+      
+      <div class="emergency-contacts">
+        <h3 data-en="Emergency Contacts" data-fr="Contacts d'urgence" data-ar="جهات الاتصال في حالات الطوارئ">Emergency Contacts</h3>
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <span data-en="Police: 17" data-fr="Police : 17" data-ar="الشرطة: 17">Police: 17</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-ambulance"></i>
+          <span data-en="Ambulance: 14" data-fr="Ambulance : 14" data-ar="الإسعاف: 14">Ambulance: 14</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-fire"></i>
+          <span data-en="Fire: 14" data-fr="Pompiers : 14" data-ar="الإطفاء: 14">Fire: 14</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2 data-en="Cultural Tips" data-fr="Conseils Culturels" data-ar="نصائح ثقافية">Cultural Tips</h2>
+      <p data-en="To respect local customs and traditions:" data-fr="Pour respecter les coutumes et traditions locales :" data-ar="لاحترام العادات والتقاليد المحلية:">
+        To respect local customs and traditions:
+      </p>
+      <ul>
+        <li data-en="Dress modestly, especially in religious sites" data-fr="Habillez-vous modestement, surtout dans les sites religieux" data-ar="اللباس المحتشم، خاصة في المواقع الدينية">Dress modestly, especially in religious sites</li>
+        <li data-en="Ask permission before photographing people" data-fr="Demandez la permission avant de photographier des personnes" data-ar="اطلب الإذن قبل تصوير الأشخاص">Ask permission before photographing people</li>
+        <li data-en="Avoid public displays of affection" data-fr="Évitez les démonstrations d'affection en public" data-ar="تجنب إظهار المودة في الأماكن العامة">Avoid public displays of affection</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="map-container">
+    <iframe src="https://www.bing.com/maps/embed?h=400&w=800&cp=36.878516~6.936103&lvl=12.9&typ=d&sty=r&src=SHELL&FORM=MBEDV8" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"></iframe>
+</div>
+
+  <section class="faq-section">
+    <h2 class="section-title" data-en="Frequently Asked Questions" data-fr="Questions Fréquemment Posées" data-ar="أسئلة مكررة">Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-en="Do I need a visa to visit Skikda?" data-fr="Ai-je besoin d'un visa pour visiter Skikda ?" data-ar="هل أحتاج إلى تأشيرة لزيارة سكيكدة؟">Do I need a visa to visit Skikda?</div>
+      <div class="faq-answer" data-en="Visa requirements depend on your nationality. Most visitors require a visa to enter Algeria, which should be obtained before arrival. Check with your local Algerian embassy for specific requirements." data-fr="Les exigences en matière de visa dépendent de votre nationalité. La plupart des visiteurs ont besoin d'un visa pour entrer en Algérie, qui doit être obtenu avant l'arrivée. Vérifiez auprès de votre ambassade algérienne locale pour les exigences spécifiques." data-ar="تعتمد متطلبات التأشيرة على جنسيتك. يحتاج معظم الزوار إلى تأشيرة لدخول الجزائر، والتي يجب الحصول عليها قبل الوصول. تحقق من السفارة الجزائرية المحلية للحصول على المتطلبات المحددة.">
+        Visa requirements depend on your nationality. Most visitors require a visa to enter Algeria, which should be obtained before arrival. Check with your local Algerian embassy for specific requirements.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-en="What is the time zone in Skikda?" data-fr="Quel est le fuseau horaire à Skikda ?" data-ar="ما هي المنطقة الزمنية في سكيكدة؟">What is the time zone in Skikda?</div>
+      <div class="faq-answer" data-en="Skikda follows Central European Time (CET, UTC+1) and observes daylight saving time in summer (CEST, UTC+2)." data-fr="Skikda suit l'heure d'Europe centrale (CET, UTC+1) et observe l'heure d'été en été (CEST, UTC+2)." data-ar="تتبع سكيكدة توقيت وسط أوروبا (CET، UTC+1) وتطبق التوقيت الصيفي في الصيف (CEST، UTC+2).">
+        Skikda follows Central European Time (CET, UTC+1) and observes daylight saving time in summer (CEST, UTC+2).
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-en="Is tap water safe to drink?" data-fr="L'eau du robinet est-elle potable ?" data-ar="هل ماء الصنبور صالح للشرب؟">Is tap water safe to drink?</div>
+      <div class="faq-answer" data-en="While tap water is generally treated, it's recommended to drink bottled water to avoid any potential stomach upset." data-fr="Bien que l'eau du robinet soit généralement traitée, il est recommandé de boire de l'eau en bouteille pour éviter tout maux d'estomac potentiel." data-ar="على الرغم من أن ماء الصنبور معالج بشكل عام، إلا أنه يوصى بشرب المياه المعبأة في زجاجات لتجنب أي اضطراب محتمل في المعدة.">
+        While tap water is generally treated, it's recommended to drink bottled water to avoid any potential stomach upset.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-en="What is the voltage and plug type?" data-fr="Quelle est la tension et le type de prise ?" data-ar="ما هو الجهد الكهربائي ونوع القابس؟">What is the voltage and plug type?</div>
+      <div class="faq-answer" data-en="Algeria uses 230V/50Hz electricity with Type C and Type F plugs (European standard)." data-fr="L'Algérie utilise l'électricité 230V/50Hz avec des prises de type C et F (norme européenne)." data-ar="تستخدم الجزائر كهرباء 230 فولت/50 هرتز مع مقابس من النوع C وF (المعيار الأوروبي).">
+        Algeria uses 230V/50Hz electricity with Type C and Type F plugs (European standard).
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" data-en="Are there any cultural events I should know about?" data-fr="Y a-t-il des événements culturels que je devrais connaître ?" data-ar="هل هناك أي أحداث ثقافية يجب أن أعرف عنها؟">Are there any cultural events I should know about?</div>
+      <div class="faq-answer" data-en="Skikda hosts several cultural festivals throughout the year, including the International Festival of Mediterranean Music in July and the Skikda Cultural Week in September." data-fr="Skikda accueille plusieurs festivals culturels tout au long de l'année, dont le Festival international de musique méditerranéenne en juillet et la Semaine culturelle de Skikda en septembre." data-ar="تستضيف سكيكدة العديد من المهرجانات الثقافية على مدار العام، بما في ذلك المهرجان الدولي للموسيقى المتوسطية في يوليو والأسبوع الثقافي لسكيكدة في سبتمبر.">
+        Skikda hosts several cultural festivals throughout the year, including the International Festival of Mediterranean Music in July and the Skikda Cultural Week in September.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 data-en="About Us" data-fr="À propos" data-ar="معلومات عنا">About Us</h4>
+        <p data-en="Discover the beauty and history of Skikda with our expert guides."
+           data-fr="Découvrez la beauté et l'histoire de Skikda avec nos guides experts."
+           data-ar="اكتشف جمال وتاريخ سكيكدة مع مرشدينا الخبراء.">
+          Discover the beauty and history of Skikda with our expert guides.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Quick Links" data-fr="Liens rapides" data-ar="روابط سريعة">Quick Links</h4>
+        <ul>
+          <li><a href="index.php" data-en="Home" data-fr="Accueil" data-ar="الرئيسية">Home</a></li>
+          <li><a href="facilities.html" data-en="Facilities" data-fr="Installations" data-ar="مرافق">Facilities</a></li>
+          <li><a href="activities.html" data-en="Activities" data-fr="Activités" data-ar="أنشطة">Activities</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Contact" data-fr="Contact" data-ar="اتصل بنا">Contact</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Skikda, Algeria</li>
+          <li><i class="fas fa-phone"></i> +213 123 456 789</li>
+          <li><i class="fas fa-envelope"></i> info@skikdatours.com</li>
+        </ul>
+       
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; <span id="year"></span> <span data-en="Skikda Tours" data-fr="Tours Skikda" data-ar="جولات سكيكدة">Skikda Tours</span>. <span data-en="All rights reserved." data-fr="Tous droits réservés." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+<script src="index.js"></script>
+<script>    
+  // FAQ functionality
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentElement;
+      item.classList.toggle('active');
+    });
+  });
+</script>
+</body>
+</html>
